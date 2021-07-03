@@ -1,0 +1,22 @@
+*** Settings ***
+Library           SeleniumLibrary
+
+*** Test Cases ***
+case01
+    open broswer    http://www.baidu.com    Chrome
+
+case02_163music_login
+    Open Broswer    http://music.163.com    chrome
+    Maximize Broswer Window
+    Click Element    xpath=//*[text='登录']
+    Sleep    1s
+    Click Element    xpath=//*[@id="j-official-terms"]
+    Click Element    class=u-mlg2-qq
+    ${handles}    Get Window Handles
+    Select Window    ${handles}[1]
+    sleep    2s
+    Select Frame    xpath=//*[@id="ptlogin_iframe"]
+    Click Element    xpath=//*[@id="qlogin_list"]/a[3}
+    Select Window    ${handles}[0]
+    sleep    5s
+    Click Element    xpath=//*[@title="关闭窗体"]
